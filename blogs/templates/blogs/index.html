@@ -5,8 +5,13 @@
     <h1>{{ post.title }}</h1>
     <p>By {{ post.author }} on {{ post.date_posted }}</p>
     <p>{{ post.text }}</p>
+    <p>
+        <a href="{% url 'blogs:edit_post' post.id %}">Edit post</a>
+    </p>
     {% empty %}
     <li>There are no posts on this blog yet.</li>
     {% endfor %}
 </body>
+
+<a href="{% url 'blogs:new_post' %}">Add a new post</a>
 {% endblock content %}
