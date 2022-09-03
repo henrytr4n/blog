@@ -36,7 +36,7 @@ def edit_post(request, post_id):
         form = PostForm(instance=post)
     else:
         # POST data submitted; process data.
-        form = PostForm(data=request.POST)
+        form = PostForm(instance=post, data=request.POST)
         if form.is_valid():
             form.save()
             return redirect("blogs:index")
