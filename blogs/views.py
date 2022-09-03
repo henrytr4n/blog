@@ -33,13 +33,13 @@ def edit_post(request, post_id):
 
     if request.method != "POST":
         # Initial request; pre-fill form with the current post.
-        form = PostForm()
+        form = PostForm(instance=post)
     else:
         # POST data submitted; process data.
         form = PostForm(data=request.POST)
         if form.is_valid():
             form.save()
-            return redirect("blogs:index", post_id=post.id)
+            return redirect("blogs:index")
 
     context = {"post": post, "form": form}
     return render(request, "blogs/edit_post.html", context)
